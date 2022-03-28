@@ -9,17 +9,53 @@ public class Main {
 
         Diet child1 = new Diet();
 
-        Entry a  = new Entry( "Jan 1", 30);
-        Entry c  = new Entry("Jan 15", 25);
-        Entry b  = new Entry("Jan 18", 19);
-        Entry d = new Entry("Jan 27", 36);
+       int selection = 0;
 
-       child1.entrylist.add(a);
-       child1.entrylist.add(c);
-       child1.entrylist.add(b);
-       child1.entrylist.add(d);
+while(selection != 4) {
 
-        System.out.println(child1.viewList());
+    System.out.println("=========================\n        Main Menu        \n=========================");
+    System.out.println("1. Add Record \n2. View Record \n3. View All Record \n4. Exit");
+    Scanner sel = new Scanner(System.in);
+    selection = sel.nextInt();
+    System.out.println("Selection:" + selection);
 
+    if(selection == 1) {
+        System.out.println("=========================\n       Add Record        \n=========================");
+        System.out.println("Enter date");
+        Scanner date = new Scanner(System.in);
+        String dt = date.nextLine();
+
+        System.out.println("Enter weight");
+        Scanner weight = new Scanner(System.in);
+        int wt = weight.nextInt();
+
+        addRecord(child1, dt, wt);
+    }
+
+    else if(selection == 2){
+        System.out.println("=========================\n       View Record       \n=========================");
+        System.out.println("Enter date");
+        Scanner date = new Scanner(System.in);
+        String dt = date.nextLine();
+        System.out.println(ViewRecord(child1, dt));
+    }
+
+    else if(selection == 3){
+        System.out.println("=========================\n     View All Record     \n=========================");
+        System.out.println(ViewAllRecord(child1));
+    }
+}
+    }
+
+    private static void addRecord(Diet child1, String dt, int wt) {
+        child1.addEntry(dt, wt);
+    }
+
+    private static String ViewRecord(Diet child1, String dat) {
+        return child1.getEntry(dat);
+    }
+
+    private static String ViewAllRecord(Diet child1) {
+        return child1.viewList();
     }
 }

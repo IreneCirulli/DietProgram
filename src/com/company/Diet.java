@@ -31,7 +31,7 @@ public class Diet {
         String enresult = " ";
         for(int i = 0; i<entrylist.size(); i++){
             if(entrylist.get(i).getDate().equals(endate))
-              enresult = entrylist.get(i).toString();
+              enresult = Integer.toString(entrylist.get(i).getWeight());
         }
         if(enresult.equals(" "))
            return "null";
